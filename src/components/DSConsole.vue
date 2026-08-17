@@ -1,13 +1,13 @@
 <template>
   <div 
-    class="ds-console w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden relative"
+    class="ds-console w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden relative flex flex-col"
     :style="{ 
       backgroundColor: themeColors.primary,
       boxShadow: `0 20px 60px ${themeColors.primary}80, inset 0 2px 4px rgba(255,255,255,0.1)`
     }"
   >
     <!-- Top Screen -->
-    <div class="h-[40vh] p-6 relative" :style="{ backgroundColor: themeColors.secondary }">
+    <div class="h-[45vh] p-6 relative flex-shrink-0" :style="{ backgroundColor: themeColors.secondary }">
       <div 
         class="ds-screen h-full rounded-xl p-4 overflow-y-auto scanlines relative border-4"
         :style="{ 
@@ -27,10 +27,10 @@
             <button 
               @click="$emit('language-change', 'es')"
               class="ds-font text-xs px-4 py-2 rounded hover:opacity-80 transition-opacity border-2 relative overflow-hidden"
-              :class="lang === 'es' ? 'bg-ds-accent' : 'bg-ds-primary'"
+              :class="lang === 'es' ? 'ds-red' : 'ds-slate'"
               :style="{ 
-                color: themeColors.screen,
-                borderColor: themeColors.accent 
+                color: '#ffffff',
+                borderColor: '#ffffff' 
               }"
             >
               <div class="absolute inset-0 opacity-30" style="background: linear-gradient(to bottom, #c60b1e 33%, #ffc400 33%, #ffc400 66%, #c60b1e 66%);"></div>
@@ -39,10 +39,10 @@
             <button 
               @click="$emit('language-change', 'en')"
               class="ds-font text-xs px-4 py-2 rounded hover:opacity-80 transition-opacity border-2 relative overflow-hidden"
-              :class="lang === 'en' ? 'bg-ds-accent' : 'bg-ds-primary'"
+              :class="lang === 'en' ? 'ds-blue' : 'ds-slate'"
               :style="{ 
-                color: themeColors.screen,
-                borderColor: themeColors.accent 
+                color: '#ffffff',
+                borderColor: '#ffffff' 
               }"
             >
               <div class="absolute inset-0 opacity-30" style="background: linear-gradient(to bottom, #b22234 15%, #ffffff 15%, #ffffff 23%, #b22234 23%, #b22234 38%, #ffffff 38%, #ffffff 46%, #b22234 46%, #b22234 61%, #ffffff 61%, #ffffff 69%, #b22234 69%);"></div>
@@ -95,7 +95,7 @@
     </div>
     
     <!-- Bottom Screen -->
-    <div class="h-[50vh] p-6 relative" :style="{ backgroundColor: themeColors.secondary }">
+    <div class="h-[55vh] p-6 relative flex-grow" :style="{ backgroundColor: themeColors.secondary }">
       <div 
         class="ds-screen h-full rounded-xl p-4 relative scanlines border-4"
         :style="{ 
@@ -120,12 +120,13 @@
               :style="{ 
                 color: themeColors.screen,
                 borderColor: themeColors.accent,
-                boxShadow: activeCartridge === cartridge.id ? `0 0 15px ${themeColors.accent}60` : '0 4px 6px rgba(0,0,0,0.3)'
+                boxShadow: activeCartridge === cartridge.id ? `0 0 15px ${themeColors.accent}60` : '0 4px 6px rgba(0,0,0,0.3)',
+                backgroundImage: activeCartridge === cartridge.id ? `url('/assets/images/button_active.png')` : `url('/assets/images/button.png')`,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center'
               }"
             >
-              <div class="absolute inset-0 opacity-10" v-if="activeCartridge === cartridge.id" 
-                   :style="{ background: `linear-gradient(45deg, ${themeColors.accent} 25%, transparent 25%, transparent 50%, ${themeColors.accent} 50%, ${themeColors.accent} 75%, transparent 75%)`, backgroundSize: '10px 10px' }">
-              </div>
               <span class="relative z-10">{{ cartridge.label }}</span>
             </button>
           </div>
@@ -142,7 +143,7 @@
           }"
         >
           <div class="flex items-center gap-3">
-            <span class="ds-font text-xs" :style="{ color: themeColors.screen }">
+            <span class="ds-clock-font text-xs" :style="{ color: themeColors.screen }">
               {{ currentTime }}
             </span>
           </div>
@@ -388,13 +389,125 @@ const cartridges = [
 
 const themeColors = computed(() => {
   const themes = {
-    black: { primary: '#1a1a1a', secondary: '#2d2d2d', accent: '#4a4a4a', screen: '#c8d8b0', screenLight: '#a8c890' },
-    blueRoyal: { primary: '#1e3a5f', secondary: '#2c5282', accent: '#4299e1', screen: '#bee3f8', screenLight: '#90cdf4' },
-    blueLight: { primary: '#2b6cb0', secondary: '#4299e1', accent: '#63b3ed', screen: '#e3f2fd', screenLight: '#bbdefb' },
-    greenLime: { primary: '#276749', secondary: '#38a169', accent: '#68d391', screen: '#c6f6d5', screenLight: '#9ae6b4' },
-    pinkLight: { primary: '#97266d', secondary: '#b83280', accent: '#d53f8c', screen: '#fed7e2', screenLight: '#fbb6ce' },
-    redCandy: { primary: '#c53030', secondary: '#e53e3e', accent: '#fc8181', screen: '#fed7d7', screenLight: '#feb2b2' },
-    white: { primary: '#f7fafc', secondary: '#e2e8f0', accent: '#cbd5e0', screen: '#a0aec0', screenLight: '#718096' }
+    black: {
+      primary: '#494949',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#c8d8b0',
+      screenLight: '#a8c890'
+    },
+    slate: {
+      primary: '#61829a',
+      secondary: '#494949',
+      accent: '#808080',
+      screen: '#bee3f8',
+      screenLight: '#90cdf4'
+    },
+    maroon: {
+      primary: '#ba4900',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#fed7d7',
+      screenLight: '#feb2b2'
+    },
+    red: {
+      primary: '#fb0018',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#fed7d7',
+      screenLight: '#feb2b2'
+    },
+    pink: {
+      primary: '#fb8afb',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#fed7e2',
+      screenLight: '#fbb6ce'
+    },
+    orange: {
+      primary: '#fb9200',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#fef3c7',
+      screenLight: '#fde68a'
+    },
+    yellow: {
+      primary: '#f3e300',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#fef9c3',
+      screenLight: '#fef08a'
+    },
+    neonyellow: {
+      primary: '#aafb00',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#ecfccb',
+      screenLight: '#d9f99d'
+    },
+    lime: {
+      primary: '#00fb00',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#dcfce7',
+      screenLight: '#bbf7d0'
+    },
+    green: {
+      primary: '#00a238',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#dcfce7',
+      screenLight: '#bbf7d0'
+    },
+    teal: {
+      primary: '#49db8a',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#ccfbf1',
+      screenLight: '#99f6e4'
+    },
+    turquoise: {
+      primary: '#30baf3',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#e0f2fe',
+      screenLight: '#bae6fd'
+    },
+    blue: {
+      primary: '#0059f3',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#dbeafe',
+      screenLight: '#bfdbfe'
+    },
+    navy: {
+      primary: '#000092',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#dbeafe',
+      screenLight: '#bfdbfe'
+    },
+    darkpurple: {
+      primary: '#8a00d3',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#f3e8ff',
+      screenLight: '#d8b4fe'
+    },
+    magenta: {
+      primary: '#d300eb',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#fce7f3',
+      screenLight: '#fbcfe8'
+    },
+    fuschia: {
+      primary: '#fb0092',
+      secondary: '#282828',
+      accent: '#808080',
+      screen: '#fce7f3',
+      screenLight: '#fbcfe8'
+    }
   }
   return themes[props.theme] || themes.black
 })

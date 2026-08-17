@@ -20,8 +20,8 @@ const handleLanguageChange = (lang) => {
 }
 
 onMounted(() => {
-  // Initialize random theme
-  const themes = ['black', 'blueRoyal', 'blueLight', 'greenLime', 'pinkLight', 'redCandy', 'white']
+  // Initialize random theme with DS official colors
+  const themes = ['black', 'slate', 'maroon', 'red', 'pink', 'orange', 'yellow', 'neonyellow', 'lime', 'green', 'teal', 'turquoise', 'blue', 'navy', 'darkpurple', 'magenta', 'fuschia']
   currentTheme.value = themes[Math.floor(Math.random() * themes.length)]
 })
 </script>

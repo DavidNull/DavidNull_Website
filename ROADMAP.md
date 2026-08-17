@@ -229,3 +229,36 @@ DavidNull_Website/
 - Proyecto: DavidNull DS Portfolio
 - Stack: Vue.js 3 + Vite + Tailwind CSS
 - Estilo: Nintendo DS Retro Theme
+
+
+
+ME quedan todos los assets
+https://github.com/spiritov/ds.css?via=dailydev Robar assets de aqui
+Pillar calendar para fecha, pictochat para hacer como dibujitos de tepig para algo luego alertas para escribirme y demas y solo usamos estetica de la ds [text](node_modules)
+
+## 🚨 PROBLEMAS ACTUALES (AGOSTO 2026)
+
+### ❌ Interfaz Rota
+- Botones ES/EN no funcionan correctamente con hover
+- Banderas ES/EN no se ven claras al hacer click
+- Información demasiado densa y abrumadora
+- Botones DS no se ven correctamente
+- Layout no respeta formato DS real
+- Elementos no centrados correctamente
+
+### ✅ Cambios Realizados
+- [x] Eliminar botón de mascota del HUD
+- [x] Simplificar información del portfolio (menos texto)
+- [x] Eliminar botón de apagar duplicado
+- [x] Eliminar rayas verticales del speaker
+- [x] Añadir botón de apagar verde en HUD
+- [x] Arreglar funcionalidad touch screen
+- [x] Simplificar código JavaScript (eliminar patrones IA)
+- [x] Reducir densidad de contenido por sección
+- [x] Hacer interfaz más minimalista y profesional
+
+### 🔧 Cambios Pendientes
+- [ ] Arreglar hover de botones ES/EN para mostrar banderas más claras
+- [ ] Revisar y corregir layout de botones DS
+- [ ] Mejorar centrado de elementos
+- [ ] Usar correctamente assets DS de public/assets

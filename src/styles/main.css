@@ -1,4 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import './ds.css';
+
+@font-face {
+  font-family: 'NitroDS';
+  src: url('/assets/fonts/nitrods-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DS-Clock';
+  src: url('/assets/fonts/ds-clock-numbers-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
   --ds-primary: #1a1a1a;
@@ -24,9 +39,13 @@ body {
   min-height: 100vh;
 }
 
-/* DS BIOS Font Placeholder - Will be replaced with actual Nintendo DS BIOS font */
+/* DS BIOS Font - Using NitroDS font from ds.css */
 .ds-font {
-  font-family: 'Press Start 2P', cursive; /* Temporal, will be replaced */
+  font-family: 'NitroDS', 'Press Start 2P', cursive;
+}
+
+.ds-clock-font {
+  font-family: 'DS-Clock', 'NitroDS', 'Press Start 2P', cursive;
 }
 
 /* Retro Scanline Effect */

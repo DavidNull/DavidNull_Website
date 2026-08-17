@@ -1,12 +1,471 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>David Cela Pedraza - Platform Engineer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Cela Pedraza - Platform Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="src/styles/ds.css">
+    <link rel="stylesheet" href="src/styles/main.css">
+    <script src="data-es.js"></script>
+    <script src="data-en.js"></script>
+    <script>
+        // DS Color Themes based on official ds.css colors
+        const dsThemes = {
+            black: {
+                primary: '#494949',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#c8d8b0',
+                screenLight: '#a8c890'
+            },
+            slate: {
+                primary: '#61829a',
+                secondary: '#494949',
+                accent: '#808080',
+                screen: '#bee3f8',
+                screenLight: '#90cdf4'
+            },
+            maroon: {
+                primary: '#ba4900',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#fed7d7',
+                screenLight: '#feb2b2'
+            },
+            red: {
+                primary: '#fb0018',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#fed7d7',
+                screenLight: '#feb2b2'
+            },
+            pink: {
+                primary: '#fb8afb',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#fed7e2',
+                screenLight: '#fbb6ce'
+            },
+            orange: {
+                primary: '#fb9200',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#fef3c7',
+                screenLight: '#fde68a'
+            },
+            yellow: {
+                primary: '#f3e300',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#fef9c3',
+                screenLight: '#fef08a'
+            },
+            neonyellow: {
+                primary: '#aafb00',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#ecfccb',
+                screenLight: '#d9f99d'
+            },
+            lime: {
+                primary: '#00fb00',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#dcfce7',
+                screenLight: '#bbf7d0'
+            },
+            green: {
+                primary: '#00a238',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#dcfce7',
+                screenLight: '#bbf7d0'
+            },
+            teal: {
+                primary: '#49db8a',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#ccfbf1',
+                screenLight: '#99f6e4'
+            },
+            turquoise: {
+                primary: '#30baf3',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#e0f2fe',
+                screenLight: '#bae6fd'
+            },
+            blue: {
+                primary: '#0059f3',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#dbeafe',
+                screenLight: '#bfdbfe'
+            },
+            navy: {
+                primary: '#000092',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#dbeafe',
+                screenLight: '#bfdbfe'
+            },
+            darkpurple: {
+                primary: '#8a00d3',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#f3e8ff',
+                screenLight: '#d8b4fe'
+            },
+            magenta: {
+                primary: '#d300eb',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#fce7f3',
+                screenLight: '#fbcfe8'
+            },
+            fuschia: {
+                primary: '#fb0092',
+                secondary: '#282828',
+                accent: '#808080',
+                screen: '#fce7f3',
+                screenLight: '#fbcfe8'
+            }
+        };
+
+        // Random theme selection
+        const themeKeys = Object.keys(dsThemes);
+        const randomTheme = dsThemes[themeKeys[Math.floor(Math.random() * themeKeys.length)]];
+
+        // Apply theme colors to CSS variables
+        document.documentElement.style.setProperty('--ds-primary', randomTheme.primary);
+        document.documentElement.style.setProperty('--ds-secondary', randomTheme.secondary);
+        document.documentElement.style.setProperty('--ds-accent', randomTheme.accent);
+        document.documentElement.style.setProperty('--ds-screen', randomTheme.screen);
+        document.documentElement.style.setProperty('--ds-screen-light', randomTheme.screenLight);
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ds-primary': randomTheme.primary,
+                        'ds-secondary': randomTheme.secondary,
+                        'ds-accent': randomTheme.accent,
+                        'ds-screen': randomTheme.screen,
+                        'ds-screen-light': randomTheme.screenLight,
+                    },
+                    animation: {
+                        'blink': 'blink 1s infinite',
+                        'pulse-slow': 'pulse 2s infinite',
+                        'bounce-in': 'bounceIn 0.5s ease-out',
+                        'slide-left': 'slideLeft 0.3s ease-out',
+                        'slide-right': 'slideRight 0.3s ease-out',
+                        'wiggle': 'wiggle 0.5s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blink: {
+                            '0%, 50%': { opacity: '1' },
+                            '51%, 100%': { opacity: '0' },
+                        },
+                        bounceIn: {
+                            '0%': { transform: 'scale(0.3)', opacity: '0' },
+                            '50%': { transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' },
+                        },
+                        glow: {
+                            '0%, 100%': { boxShadow: '0 0 5px rgba(255, 255, 255, 0.3)' },
+                            '50%': { boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Text shadow for better visibility on buttons */
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            #ds-console {
+                max-width: 95vw;
+                max-height: 95vh;
+            }
+            
+            .ds-screen {
+                font-size: 0.8em;
+            }
+            
+            .ds-font {
+                font-size: 0.7em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #ds-console {
+                max-width: 98vw;
+                max-height: 98vh;
+            }
+            
+            .ds-font {
+                font-size: 0.6em;
+            }
+        }
+    </style>
 </head>
-<body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.js"></script>
+<body class="bg-gray-900 min-h-screen flex items-center justify-center p-2 md:p-4" id="main-body">
+    <!-- DS Console Container -->
+    <div id="ds-console" class="w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden flex flex-col" style="background-color: var(--ds-primary); max-height: 90vh;">
+        <!-- Top Screen -->
+        <div class="h-[35vh] p-4 relative flex-shrink-0" style="background-color: var(--ds-secondary);">
+            <div class="ds-screen h-full rounded-xl p-3 overflow-y-auto scanlines relative border-4" 
+                 style="background: linear-gradient(135deg, var(--ds-screen) 0%, var(--ds-screen-light) 100%); border-color: var(--ds-primary); box-shadow: inset 0 4px 8px rgba(0,0,0,0.3), 0 2px 4px rgba(255,255,255,0.1);">
+                <!-- Splash State -->
+                <div id="splash-content" class="h-full flex flex-col items-center justify-center text-ds-black">
+                    <h1 class="ds-font text-lg md:text-2xl text-center mb-4 game-text animate-float">David Cela Pedraza</h1>
+                    <p class="ds-font text-xs md:text-sm text-center mb-8 game-text">Platform Engineer</p>
+                    
+                    <div class="flex gap-4 mb-8">
+                        <button id="lang-es" class="ds-font text-xs px-4 py-2 rounded border-2 relative overflow-hidden transition-all" style="color: #ffffff; border-color: #ffffff; background-color: #c60b1e;">
+                            <div class="absolute inset-0 opacity-50" style="background: linear-gradient(to bottom, #c60b1e 33%, #ffc400 33%, #ffc400 66%, #c60b1e 66%);"></div>
+                            <span class="relative z-10">ES</span>
+                        </button>
+                        <button id="lang-en" class="ds-font text-xs px-4 py-2 rounded border-2 relative overflow-hidden transition-all" style="color: #ffffff; border-color: #ffffff; background-color: #b22234;">
+                            <div class="absolute inset-0 opacity-50" style="background: repeating-linear-gradient(180deg, #b22234 0%, #b22234 7.7%, #ffffff 7.7%, #ffffff 15.4%);"></div>
+                            <span class="relative z-10">EN</span>
+                        </button>
+                    </div>
+                    
+                    <button id="start-btn" class="ds-font text-xs md:text-sm p-2 rounded hover:scale-105 transition-all duration-200 animate-blink border-2 game-text flex items-center justify-center" 
+                            style="background-image: url('public/assets/images/button_lg.png'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 70px; min-width: 200px; color: #ffffff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">
+                        <span class="relative z-10 text-center">START / TOUCH TO START</span>
+                    </button>
+                </div>
+                
+                <!-- Main Content (Hidden initially) -->
+                <div id="main-content" class="hidden h-full">
+                    <div id="content-area" class="text-ds-black">
+                        <!-- Content will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hinge -->
+        <div class="h-6 relative" style="background-color: var(--ds-primary);">
+            <div class="absolute inset-0 flex justify-center items-center gap-2">
+                <div class="w-2 h-2 rounded-full" style="background-color: var(--ds-secondary);"></div>
+                <div class="w-2 h-2 rounded-full" style="background-color: var(--ds-secondary);"></div>
+            </div>
+        </div>
+        
+        <!-- Bottom Screen -->
+        <div class="h-[45vh] p-4 relative flex-grow" style="background-color: var(--ds-secondary);">
+            <div class="ds-screen h-full rounded-xl p-3 relative scanlines border-4" 
+                 style="background: linear-gradient(135deg, var(--ds-screen) 0%, var(--ds-screen-light) 100%); border-color: var(--ds-primary); box-shadow: inset 0 4px 8px rgba(0,0,0,0.3), 0 2px 4px rgba(255,255,255,0.1);">
+                <!-- Cartridge Grid (Hidden initially) -->
+                <div id="cartridge-grid" class="hidden h-full flex items-center justify-center">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 w-full pb-12">
+                        <!-- CV Cartridge -->
+                        <button class="cartridge-btn ds-font text-xs p-2 transition-all duration-200 relative overflow-hidden flex items-center justify-center" data-section="cv" 
+                                style="color: #ffffff; background-image: url('public/assets/images/button_lg.png'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 70px; min-width: 100px;">
+                            <span class="relative z-10 text-center text-shadow">CV</span>
+                        </button>
+                        
+                        <!-- Skills Cartridge -->
+                        <button class="cartridge-btn ds-font text-xs p-2 transition-all duration-200 relative overflow-hidden flex items-center justify-center" data-section="skills" 
+                                style="color: #ffffff; background-image: url('public/assets/images/button_lg.png'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 70px; min-width: 100px;">
+                            <span class="relative z-10 text-center text-shadow">SKILLS</span>
+                        </button>
+                        
+                        <!-- Experience Cartridge -->
+                        <button class="cartridge-btn ds-font text-xs p-2 transition-all duration-200 relative overflow-hidden flex items-center justify-center" data-section="experience" 
+                                style="color: #ffffff; background-image: url('public/assets/images/button_lg.png'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 70px; min-width: 100px;">
+                            <span class="relative z-10 text-center text-shadow">EXP</span>
+                        </button>
+                        
+                        <!-- Certs Cartridge -->
+                        <button class="cartridge-btn ds-font text-xs p-2 transition-all duration-200 relative overflow-hidden flex items-center justify-center" data-section="certs" 
+                                style="color: #ffffff; background-image: url('public/assets/images/button_lg.png'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 70px; min-width: 100px;">
+                            <span class="relative z-10 text-center text-shadow">CERTS</span>
+                        </button>
+                        
+                        <!-- Projects Cartridge -->
+                        <button class="cartridge-btn ds-font text-xs p-2 transition-all duration-200 relative overflow-hidden flex items-center justify-center" data-section="projects" 
+                                style="color: #ffffff; background-image: url('public/assets/images/button_lg.png'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 70px; min-width: 100px;">
+                            <span class="relative z-10 text-center text-shadow">PROJ</span>
+                        </button>
+                        
+                        <!-- Education Cartridge -->
+                        <button class="cartridge-btn ds-font text-xs p-2 transition-all duration-200 relative overflow-hidden flex items-center justify-center" data-section="education" 
+                                style="color: #ffffff; background-image: url('public/assets/images/button_lg.png'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 70px; min-width: 100px;">
+                            <span class="relative z-10 text-center text-shadow">EDU</span>
+                        </button>
+                        
+                        <!-- Contact Cartridge -->
+                        <button class="cartridge-btn ds-font text-xs p-2 transition-all duration-200 relative overflow-hidden flex items-center justify-center" data-section="contact" 
+                                style="color: #ffffff; background-image: url('public/assets/images/button_lg.png'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 70px; min-width: 100px;">
+                            <span class="relative z-10 text-center text-shadow">CONTACT</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- HUD -->
+                <div id="hud" class="hidden absolute bottom-0 left-0 right-0 p-3 flex justify-between items-center border-t-4 rounded-b-lg" 
+                     style="background-color: var(--ds-primary)95; border-color: var(--ds-primary); box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);">
+                    <div class="flex items-center gap-3">
+                        <span id="time" class="ds-clock-font text-xs" style="color: var(--ds-screen);">00:00</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <!-- Battery Icon -->
+                        <div class="flex items-center gap-1">
+                            <div class="w-8 h-4 border-2 relative rounded" style="border-color: var(--ds-screen);">
+                                <div id="battery-level" class="h-full bg-green-500 rounded" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <!-- Power Button -->
+                        <button id="power-btn" class="w-8 h-8 bg-green-500 rounded flex items-center justify-center hover:bg-green-600 transition-colors border-2" 
+                                style="border-color: var(--ds-screen);" title="POWER OFF">
+                            <span class="ds-font text-xs" style="color: #ffffff;">⏻</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let lang = 'es';
+        let data = portfolioDataES;
+
+        const esBtn = document.getElementById('lang-es');
+        const enBtn = document.getElementById('lang-en');
+        const startBtn = document.getElementById('start-btn');
+        const powerBtn = document.getElementById('power-btn');
+        const splash = document.getElementById('splash-content');
+        const main = document.getElementById('main-content');
+        const content = document.getElementById('content-area');
+        const grid = document.getElementById('cartridge-grid');
+        const hud = document.getElementById('hud');
+        const time = document.getElementById('time');
+        const battery = document.getElementById('battery-level');
+        const carts = document.querySelectorAll('.cartridge-btn');
+
+        esBtn.onclick = () => {
+            lang = 'es';
+            data = portfolioDataES;
+            esBtn.style.backgroundColor = '#c60b1e';
+            enBtn.style.backgroundColor = '#808080';
+        };
+
+        enBtn.onclick = () => {
+            lang = 'en';
+            data = portfolioDataEN;
+            enBtn.style.backgroundColor = '#b22234';
+            esBtn.style.backgroundColor = '#808080';
+        };
+
+        esBtn.style.backgroundColor = '#c60b1e';
+
+        function start() {
+            splash.classList.add('hidden');
+            main.classList.remove('hidden');
+            grid.classList.remove('hidden');
+            hud.classList.remove('hidden');
+            content.innerHTML = data.cv;
+            carts[0].style.backgroundImage = "url('public/assets/images/button_lg_active.png')";
+            carts[0].classList.add('active');
+        }
+
+        function powerOff() {
+            splash.classList.remove('hidden');
+            main.classList.add('hidden');
+            grid.classList.add('hidden');
+            hud.classList.add('hidden');
+            carts.forEach(btn => {
+                btn.style.backgroundImage = "url('public/assets/images/button_lg.png')";
+                btn.classList.remove('active');
+            });
+        }
+
+        startBtn.onclick = start;
+        startBtn.ontouchstart = (e) => {
+            e.preventDefault();
+            start();
+        };
+
+        powerBtn.onclick = powerOff;
+        powerBtn.ontouchstart = (e) => {
+            e.preventDefault();
+            powerOff();
+        };
+
+        carts.forEach(btn => {
+            btn.onclick = function() {
+                carts.forEach(b => {
+                    b.style.backgroundImage = "url('public/assets/images/button_lg.png')";
+                    b.classList.remove('active');
+                });
+                this.style.backgroundImage = "url('public/assets/images/button_lg_active.png')";
+                this.classList.add('active');
+                const section = this.dataset.section;
+                content.style.opacity = '0';
+                content.style.transform = 'translateX(-20px)';
+                setTimeout(() => {
+                    content.innerHTML = data[section];
+                    content.style.transition = 'all 0.3s ease-out';
+                    content.style.opacity = '1';
+                    content.style.transform = 'translateX(0)';
+                }, 200);
+            };
+            btn.ontouchstart = (e) => {
+                e.preventDefault();
+                btn.onclick();
+            };
+        });
+
+        function clock() {
+            const now = new Date();
+            time.textContent = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+        }
+        setInterval(clock, 1000);
+        clock();
+
+        if (navigator.getBattery) {
+            navigator.getBattery().then(bat => {
+                function updateBat() {
+                    const level = Math.round(bat.level * 100);
+                    battery.style.width = level + '%';
+                    if (level <= 20) {
+                        battery.classList.remove('bg-green-500');
+                        battery.classList.add('bg-red-500');
+                    }
+                }
+                updateBat();
+                bat.addEventListener('levelchange', updateBat);
+            });
+        }
+    </script>
 </body>
 </html>
