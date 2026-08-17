@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --ds-primary: #1a1a1a;
+  --ds-secondary: #2d2d2d;
+  --ds-accent: #4a4a4a;
+  --ds-screen: #c8d8b0;
+  --ds-screen-light: #a8c890;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+/* DS BIOS Font Placeholder - Will be replaced with actual Nintendo DS BIOS font */
+.ds-font {
+  font-family: 'Press Start 2P', cursive; /* Temporal, will be replaced */
+}
+
+/* Retro Scanline Effect */
+.scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Game Text Shadow */
+.game-text {
+  text-shadow: 
+    2px 2px 0px rgba(0,0,0,0.8),
+    -1px -1px 0px rgba(255,255,255,0.3);
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideLeft {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s infinite;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.5s ease-out;
+}
+
+.animate-slide-left {
+  animation: slideLeft 0.3s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ds-console {
+    flex-direction: column;
+  }
+  
+  .ds-screen {
+    min-height: 300px;
+  }
+}
