@@ -9,12 +9,12 @@ loading   - loading animation
 
 @font-face {
   font-family: 'ds-system';
-  src: url('/assets/fonts/nitrods-font.ttf') format('truetype');
+  src: url('./assets/fonts/nitrods-font.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'ds-clock';
-  src: url('/assets/fonts/ds-clock-numbers-font.ttf') format('truetype');
+  src: url('./assets/fonts/ds-clock-numbers-font.ttf') format('truetype');
 }
 
 @layer preflight {
