@@ -3,9 +3,17 @@ const portfolioDataES = {
     name: "David Cela Pedraza",
     title: "Platform Engineer",
     cv: `
-        <h2 class="ds-font text-sm mb-3">PERFIL</h2>
-        <p class="ds-font text-xs mb-2">Platform Engineer - IaC, Kubernetes, Cloud</p>
-        <p class="ds-font text-xs mb-2">Security First • AWS Well-Architected</p>
+        <div class="flex items-center justify-center h-full gap-4">
+            <div class="flex-1 flex flex-col items-center justify-center">
+                <ds-clock style="--color: #000000;" hide-border></ds-clock>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center">
+                <div id="pictochat-widget" class="w-full h-32 border-2 rounded-lg p-2" style="border-color: #000000; background-color: #f0f0f0;">
+                    <div class="text-xs text-center mb-2" style="color: #000000;">💬 PictoChat</div>
+                    <div class="text-xs text-center" style="color: #333333;">Nintendo DS Style</div>
+                </div>
+            </div>
+        </div>
     `,
     skills: `
         <h2 class="ds-font text-sm mb-3">SKILLS</h2>
