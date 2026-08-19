@@ -526,7 +526,6 @@ function initTimeAndBattery() {
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
-    initColorSelector();
     initLanguageButtons();
     initCartridgeButtons();
     initTimeAndBattery();
