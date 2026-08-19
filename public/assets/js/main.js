@@ -1,8 +1,5 @@
 // Main JavaScript for Nintendo DS Portfolio
 
-let lang = 'es';
-let data = portfolioDataES;
-
 // Datos del portfolio en español
 const portfolioDataES = {
     name: "David Cela Pedraza",
@@ -95,6 +92,9 @@ const portfolioDataES = {
         </div>
     `
 };
+
+let lang = 'es';
+let data = portfolioDataES;
 
 // DS Color Themes based on official ds.css colors
 const dsThemes = {
