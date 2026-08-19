@@ -86,3 +86,8 @@
     display: none;
   }
 }
+
+/* Loading Animation - more padding */
+.alert {
+  padding: 2rem;
+}

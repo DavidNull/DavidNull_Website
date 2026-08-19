@@ -3,6 +3,99 @@
 let lang = 'es';
 let data = portfolioDataES;
 
+// Datos del portfolio en español
+const portfolioDataES = {
+    name: "David Cela Pedraza",
+    title: "Platform Engineer",
+    cv: `
+        <div class="flex items-center justify-center h-full gap-2 p-2">
+            <div class="flex-1 flex flex-col items-center justify-center">
+                <ds-calendar style="--color: var(--color-ds-slate); --size: 0.8;" hide-border></ds-calendar>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center gap-2">
+                <div class="pictochat-window w-full" style="font-size: 0.6rem;">
+                    <div class="pictochat-message pictochat-enter-highlight">Now joining..</div>
+                    <div class="pictochat-message">
+                        <header class="ds-slate-50">header</header>
+                        <span>message</span>
+                    </div>
+                    <div class="pictochat-status pictochat-exit-highlight">Now leaving..</div>
+                </div>
+                <label style="font-size: 0.6rem;">
+                    <span>label</span>
+                    <div class="input-wrapper">
+                        <div class="input-before"></div>
+                        <input type="text" style="font-size: 0.6rem;" />
+                        <div class="input-after"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+    `,
+    skills: `
+        <h2 class="ds-font text-xs mb-2">SKILLS</h2>
+        <div class="grid grid-cols-2 gap-1" style="font-size: 0.6rem;">
+            <div class="ds-font">IaC (90%)</div>
+            <div class="ds-font">Cloud (85%)</div>
+            <div class="ds-font">Observability (80%)</div>
+            <div class="ds-font">Kubernetes (75%)</div>
+            <div class="ds-font">Python/Go (85%)</div>
+        </div>
+    `,
+    experience: `
+        <h2 class="ds-font text-xs mb-2">EXPERIENCIA</h2>
+        <div class="space-y-1" style="font-size: 0.6rem;">
+            <div class="border-l-2 border-ds-primary pl-1">
+                <h3 class="ds-font font-bold">DevOps Engineer</h3>
+                <p class="ds-font">CONVOTIS Iberia • oct. 2025 - actualidad</p>
+            </div>
+            <div class="border-l-2 border-ds-primary pl-1">
+                <h3 class="ds-font font-bold">SRE</h3>
+                <p class="ds-font">Freepik • mar. 2025 - jun. 2025</p>
+            </div>
+        </div>
+    `,
+    certs: `
+        <h2 class="ds-font text-xs mb-2">CERTIFICACIONES</h2>
+        <div class="grid grid-cols-2 gap-1" style="font-size: 0.6rem;">
+            <div class="ds-font">☁️ AWS Well-Architected</div>
+            <div class="ds-font">🔷 Elastic Observability</div>
+            <div class="ds-font">🔍 Elasticsearch Engineer</div>
+            <div class="ds-font">🔷 Cisco CCNA Enterprise</div>
+            <div class="ds-font">🛡️ Google Cybersecurity</div>
+            <div class="ds-font">🐹 Go Programming</div>
+        </div>
+    `,
+    projects: `
+        <h2 class="ds-font text-xs mb-2">PROYECTOS</h2>
+        <div class="border-l-2 border-ds-primary pl-1" style="font-size: 0.6rem;">
+            <h3 class="ds-font font-bold">TFG - App Multiplataforma</h3>
+            <p class="ds-font">Flutter, Firebase, Vue.js</p>
+        </div>
+    `,
+    education: `
+        <h2 class="ds-font text-xs mb-2">EDUCACIÓN</h2>
+        <div class="space-y-1" style="font-size: 0.6rem;">
+            <div class="border-l-2 border-ds-primary pl-1">
+                <h3 class="ds-font font-bold">Grado Superior ASIR</h3>
+                <p class="ds-font">Bezmiliana • sept. 2023 – jun. 2025</p>
+            </div>
+            <div class="border-l-2 border-ds-primary pl-1">
+                <h3 class="ds-font font-bold">Bachillerato Tecnológico</h3>
+                <p class="ds-font">IES Margarita Salas • 2021 – 2023</p>
+            </div>
+        </div>
+    `,
+    contact: `
+        <h2 class="ds-font text-xs mb-2">CONTACTO</h2>
+        <div class="space-y-1" style="font-size: 0.6rem;">
+            <a href="https://linkedin.com/in/tu-perfil" target="_blank" class="ds-font block">📱 LinkedIn</a>
+            <a href="https://github.com/tu-usuario" target="_blank" class="ds-font block">💻 GitHub</a>
+            <a href="mailto:tu-email@ejemplo.com" class="ds-font block">📧 Email</a>
+        </div>
+    `
+};
+
 // DS Color Themes based on official ds.css colors
 const dsThemes = {
     black: {
@@ -185,54 +278,104 @@ function initTheme() {
                         '0%': { transform: 'translateX(-100%)', opacity: '0' },
                         '100%': { transform: 'translateX(0)', opacity: '1' },
                     },
-                    slideInRight: {
-                        '0%': { transform: 'translateX(100%)', opacity: '0' },
-                        '100%': { transform: 'translateX(0)', opacity: '1' },
-                    },
-                    wiggle: {
-                        '0%, 100%': { transform: 'rotate(-3deg)' },
-                        '50%': { transform: 'rotate(3deg)' },
-                    },
-                    glow: {
-                        '0%, 100%': { boxShadow: '0 0 5px rgba(255, 255, 255, 0.3)' },
-                        '50%': { boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)' },
-                    },
-                    float: {
-                        '0%, 100%': { transform: 'translateY(0)' },
-                        '50%': { transform: 'translateY(-10px)' },
-                    },
                 },
             },
         },
-    }
+    };
 }
 
-// Color dropdown toggle
-function toggleColorDropdown() {
-    const dropdown = document.getElementById('color-dropdown');
-    dropdown.classList.toggle('expanded');
-}
-
-// Color selector functionality
-function initColorSelector() {
-    const colorBtns = document.querySelectorAll('.color-btn');
-    
-    colorBtns.forEach(btn => {
-        btn.onclick = function() {
-            const color = this.dataset.color;
-            const image = this.dataset.image;
-            const theme = dsThemes[color];
-            
-            if (theme) {
-                document.documentElement.style.setProperty('--ds-primary', theme.primary);
-                document.documentElement.style.setProperty('--ds-secondary', theme.secondary);
-                document.documentElement.style.setProperty('--ds-accent', theme.accent);
-            }
-            
-            document.getElementById('ds-console').style.backgroundImage = `url('${image}')`;
-        };
-    });
-}
+// Portfolio data in English
+const portfolioDataEN = {
+    name: "David Cela Pedraza",
+    title: "Platform Engineer",
+    cv: `
+        <div class="flex items-center justify-center h-full gap-2 p-2">
+            <div class="flex-1 flex flex-col items-center justify-center">
+                <ds-calendar style="--color: var(--color-ds-slate); --size: 0.8;" hide-border></ds-calendar>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center gap-2">
+                <div class="pictochat-window w-full" style="font-size: 0.6rem;">
+                    <div class="pictochat-message pictochat-enter-highlight">Now joining..</div>
+                    <div class="pictochat-message">
+                        <header class="ds-slate-50">header</header>
+                        <span>message</span>
+                    </div>
+                    <div class="pictochat-status pictochat-exit-highlight">Now leaving..</div>
+                </div>
+                <label style="font-size: 0.6rem;">
+                    <span>label</span>
+                    <div class="input-wrapper">
+                        <div class="input-before"></div>
+                        <input type="text" style="font-size: 0.6rem;" />
+                        <div class="input-after"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+    `,
+    skills: `
+        <h2 class="ds-font text-xs mb-2">SKILLS</h2>
+        <div class="grid grid-cols-2 gap-1" style="font-size: 0.6rem;">
+            <div class="ds-font">IaC (90%)</div>
+            <div class="ds-font">Cloud (85%)</div>
+            <div class="ds-font">Observability (80%)</div>
+            <div class="ds-font">Kubernetes (75%)</div>
+            <div class="ds-font">Python/Go (85%)</div>
+        </div>
+    `,
+    experience: `
+        <h2 class="ds-font text-xs mb-2">EXPERIENCE</h2>
+        <div class="space-y-1" style="font-size: 0.6rem;">
+            <div class="border-l-2 border-ds-primary pl-1">
+                <h3 class="ds-font font-bold">DevOps Engineer</h3>
+                <p class="ds-font">CONVOTIS Iberia • Oct. 2025 - Present</p>
+            </div>
+            <div class="border-l-2 border-ds-primary pl-1">
+                <h3 class="ds-font font-bold">SRE</h3>
+                <p class="ds-font">Freepik • Mar. 2025 - Jun. 2025</p>
+            </div>
+        </div>
+    `,
+    certs: `
+        <h2 class="ds-font text-xs mb-2">CERTIFICATIONS</h2>
+        <div class="grid grid-cols-2 gap-1" style="font-size: 0.6rem;">
+            <div class="ds-font">☁️ AWS Well-Architected</div>
+            <div class="ds-font">🔷 Elastic Observability</div>
+            <div class="ds-font">🔍 Elasticsearch Engineer</div>
+            <div class="ds-font">🔷 Cisco CCNA Enterprise</div>
+            <div class="ds-font">🛡️ Google Cybersecurity</div>
+            <div class="ds-font">🐹 Go Programming</div>
+        </div>
+    `,
+    projects: `
+        <h2 class="ds-font text-xs mb-2">PROJECTS</h2>
+        <div class="border-l-2 border-ds-primary pl-1" style="font-size: 0.6rem;">
+            <h3 class="ds-font font-bold">TFG - Multiplatform App</h3>
+            <p class="ds-font">Flutter, Firebase, Vue.js</p>
+        </div>
+    `,
+    education: `
+        <h2 class="ds-font text-xs mb-2">EDUCATION</h2>
+        <div class="space-y-1" style="font-size: 0.6rem;">
+            <div class="border-l-2 border-ds-primary pl-1">
+                <h3 class="ds-font font-bold">Higher Degree ASIR</h3>
+                <p class="ds-font">Bezmiliana • Sept. 2023 – Jun. 2025</p>
+            </div>
+            <div class="border-l-2 border-ds-primary pl-1">
+                <h3 class="ds-font font-bold">Technological High School</h3>
+                <p class="ds-font">IES Margarita Salas • 2021 – 2023</p>
+            </div>
+        </div>
+    `,
+    contact: `
+        <h2 class="ds-font text-xs mb-2">CONTACT</h2>
+        <div class="space-y-1" style="font-size: 0.6rem;">
+            <a href="https://linkedin.com/in/tu-perfil" target="_blank" class="ds-font block">📱 LinkedIn</a>
+            <a href="https://github.com/tu-usuario" target="_blank" class="ds-font block">💻 GitHub</a>
+            <a href="mailto:tu-email@ejemplo.com" class="ds-font block">📧 Email</a>
+        </div>
+    `
+};
 
 // Language switching
 function initLanguageButtons() {
