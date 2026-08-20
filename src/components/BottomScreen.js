@@ -15,7 +15,7 @@ export default {
         <div class="vscreen ds-grid">
           <div :class="['bar', 'vscreen__bar', 'ds-' + state.shell]">
             <span class="vscreen__bar-title">Menu</span>
-            <span class="vscreen__bar-meta">{{ sections.length }} tabulae</span>
+            <span class="vscreen__bar-meta">{{ sections.length }} apps</span>
           </div>
 
           <div class="menu">
@@ -35,7 +35,7 @@ export default {
           </div>
 
           <div :class="['bar-lg-reverse', 'vscreen__foot', 'ds-' + state.shell]">
-            <span>Tange tabulam ut aperias</span>
+            <span>Click to check my apps</span>
           </div>
         </div>
       </FitBox>

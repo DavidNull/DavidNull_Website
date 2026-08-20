@@ -1,14 +1,22 @@
 import FitBox from './FitBox.js'
 import { PROFILE, SECTION_BY_ID } from '../data.js'
 import { state, toggleFullscreen, openSection } from '../store.js'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 export default {
   name: 'TopScreen',
   components: { FitBox },
   setup() {
     const section = computed(() => SECTION_BY_ID[state.section] || null)
-    return { state, section, profile: PROFILE, toggleFullscreen, openSection }
+    const copyMessage = ref('')
+    const copyEmail = (email) => {
+      navigator.clipboard.writeText(email)
+      copyMessage.value = '¡Correo copiado!'
+      setTimeout(() => {
+        copyMessage.value = ''
+      }, 2000)
+    }
+    return { state, section, profile: PROFILE, toggleFullscreen, openSection, copyMessage, copyEmail }
   },
   template: `
     <Teleport to="body" :disabled="!state.fullscreen">
@@ -34,15 +42,24 @@ export default {
                   <ds-calendar></ds-calendar>
                 </div>
                 <div class="info-text status__strip">
-                  <div class="profile-name">{{ profile.name }}</div>
-                  <div class="profile-subtitle">{{ profile.subtitle }}</div>
-                  <div class="profile-role">{{ profile.role }}</div>
-                  <div class="profile-tagline">{{ profile.tagline }}</div>
+                  {{ profile.tagline }}
                 </div>
               </div>
 
               <div v-else class="vscreen__body" :key="section.id">
-                <p class="panel__intro">{{ section.intro }}</p>
+                <div v-if="section.id === 'profile'" class="panel__intro-with-gif">
+                  <p class="panel__intro">{{ section.intro }}</p>
+                  <img src="./assets/tepig.gif" alt="Tepig" class="panel__gif" />
+                </div>
+                <div v-else-if="section.id === 'projects'" class="panel__intro-with-gif">
+                  <p class="panel__intro">{{ section.intro }}</p>
+                  <img src="./assets/nintendogs.gif" alt="Nintendogs" class="panel__gif" />
+                </div>
+                <div v-else-if="section.id === 'skills'" class="panel__intro-with-gif">
+                  <p class="panel__intro">{{ section.intro }}</p>
+                  <img src="./assets/mario.gif" alt="Mario" class="panel__gif" />
+                </div>
+                <p v-else class="panel__intro">{{ section.intro }}</p>
 
                 <component
                   :is="item.href ? 'a' : 'div'"
@@ -83,9 +100,9 @@ export default {
 
                 <label v-for="f in section.fields" :key="f.label" class="panel__field">
                   <span>{{ f.label }}</span>
-                  <div class="input-wrapper">
+                  <div class="input-wrapper" :class="{ 'input-wrapper--clickable': f.label === 'Email' }" @click="f.label === 'Email' ? copyEmail(f.value) : null">
                     <div class="input-before"></div>
-                    <input type="text" :value="f.value" readonly />
+                    <input type="text" :value="f.label === 'Email' && copyMessage ? copyMessage : f.value" readonly />
                     <div class="input-after"></div>
                   </div>
                 </label>
@@ -115,7 +132,7 @@ export default {
                 </div>
 
                 <button class="panel__back button-lg" type="button" @click="openSection(section.id)">
-                  Redi ad Status
+                  Back
                 </button>
               </div>
             </Transition>

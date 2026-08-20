@@ -679,32 +679,6 @@ body {
   line-height: 18px;
 }
 
-.profile-name {
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-
-.profile-subtitle {
-  font-size: 14px;
-  color: #5d5d66;
-  margin-bottom: 4px;
-  font-style: italic;
-}
-
-.profile-role {
-  font-size: 15px;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-
-.profile-tagline {
-  font-size: 13px;
-  color: #5d5d66;
-  line-height: 1.4;
-}
-
 .menu {
   flex: 1 1 auto;
   display: grid;
@@ -789,6 +763,27 @@ body {
   padding: 2px 6px 0;
   font-size: 16px;
   line-height: 1.35;
+}
+
+.panel__intro-with-gif {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 6px 0;
+}
+
+.panel__intro-with-gif .panel__intro {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.panel__gif {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .panel__card {
@@ -884,6 +879,18 @@ body {
 
 .panel__field {
   padding-inline: 6px;
+}
+
+.input-wrapper--clickable {
+  cursor: pointer;
+}
+
+.input-wrapper--clickable input {
+  cursor: pointer;
+}
+
+.input-wrapper--clickable:hover {
+  opacity: 0.8;
 }
 
 .panel__actions {

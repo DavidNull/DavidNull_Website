@@ -25,7 +25,7 @@ export default {
           </div>
         </div>
         <div class="lid__chin">
-          <span class="lid__brand">LOREM&nbsp;DS</span>
+          <span class="lid__brand">DCP&nbsp;DS</span>
           <span class="lid__grille"></span>
         </div>
       </div>
