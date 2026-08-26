@@ -41,7 +41,7 @@ export default {
 
             <div class="info boot__info">
               <div class="info-square">
-                <Sprite name="profile" />
+                <img src="../../assets/profile.gif" alt="Profile" class="profile-gif" />
               </div>
               <div class="info-container">
                 <div class="info-label">{{ profile.name }}</div>

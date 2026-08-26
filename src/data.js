@@ -11,8 +11,8 @@ export const PROFILE = {
 }
 
 export const BOOT_LINES = [
-  'Welcome to my profile!',
-  ':D',
+  '[PATCH_LOG]: Installing Bitacora module...',
+  '[NOTE]: More stuff coming soon... :D',
 ]
 
 export const SECTIONS = [

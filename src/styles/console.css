@@ -75,6 +75,13 @@ body {
   height: 56px;
 }
 
+.info-square .profile-gif {
+  width: 95%;
+  height: 95%;
+  display: block;
+  object-fit: contain;
+}
+
 .boot {
   cursor: pointer;
   width: 100%;
