@@ -1,7 +1,7 @@
 import FitBox from './FitBox.js'
 import { PROFILE, SECTION_BY_ID } from '../data.js'
-import { state, toggleFullscreen, openSection } from '../store.js'
-import { computed, ref } from 'vue'
+import { state, toggleFullscreen, openSection, markProjectsFirstOpened } from '../store.js'
+import { computed, ref, watch } from 'vue'
 
 export default {
   name: 'TopScreen',
@@ -16,6 +16,16 @@ export default {
         copyMessage.value = ''
       }, 2000)
     }
+    let firstSeenTimer = null
+    watch(() => state.section, (newSection) => {
+      if (newSection === 'projects' && !state.projectsFirstOpened) {
+        firstSeenTimer = setTimeout(() => { markProjectsFirstOpened(); firstSeenTimer = null }, 3000)
+      } else if (newSection !== 'projects' && firstSeenTimer) {
+        clearTimeout(firstSeenTimer)
+        firstSeenTimer = null
+      }
+    })
+
     return { state, section, profile: PROFILE, toggleFullscreen, openSection, copyMessage, copyEmail }
   },
   template: `
@@ -68,7 +78,7 @@ export default {
                   :href="item.href"
                   :target="item.href ? '_blank' : null"
                   :rel="item.href ? 'noreferrer' : null"
-                  :class="['pictochat-message', 'panel__card', { 'panel__card--link': item.href }]"
+                  :class="['pictochat-message', 'panel__card', { 'panel__card--link': item.href, 'panel__card--featured': item.featured, 'panel__card--firstseen': item.featured && !state.projectsFirstOpened }]"
                   :style="{ '--i': i }"
                 >
                   <header :class="'ds-' + section.color + '-50'">{{ item.title }}</header>
@@ -76,7 +86,8 @@ export default {
                     <div class="panel__col">
                       <span class="panel__meta">{{ item.meta }}</span>
                       <span class="panel__text">{{ item.text }}</span>
-                      <span v-if="item.tags" class="panel__tags flex flex-wrap gap-1">
+                      <span v-if="item.tags || item.featured" class="panel__tags flex flex-wrap gap-1">
+                        <span v-if="item.featured" class="panel__tag panel__tag--new">NEW</span>
                         <span v-for="t in item.tags" :key="t" class="panel__tag">{{ t }}</span>
                       </span>
                     </div>

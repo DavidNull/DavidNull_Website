@@ -5,13 +5,13 @@ export const PROFILE = {
   tagline: 'Did you know? You can click the FULL button to get a fullscreen view.',
   stats: [
     { label: 'Exp', value: '01' },
-    { label: 'Certificaciones', value: '23' },
-    { label: 'Proyectos', value: '06' },
+    { label: 'Certificaciones', value: '+20' },
+    { label: 'Repos', value: '06' },
   ],
 }
 
 export const BOOT_LINES = [
-  '[PATCH_LOG]: Installing Bitacora module...',
+  '[PATCH_LOG]: Check out my new project! ',
   '[NOTE]: More stuff coming soon... :D',
 ]
 
@@ -117,6 +117,14 @@ export const SECTIONS = [
     intro: 'Algunos de mis proyectos personales y laborales.',
     items: [
       {
+        title: 'NullNode',
+        meta: 'A self-hosted AI platform for running and operating local LLMs',
+        text: 'Plataforma LLMOps enterprise local y privada sobre K3s. Implementa inferencia local de LLMs con escalado dinámico (KEDA), gateway con presupuestos y control de costes (LiteLLM), caché de prompts (Redis), observabilidad dedicada GenAI y despliegue automatizado 100% por GitOps con ArgoCD y Terraform.',
+        tags: ['K3s', 'ArgoCD', 'KEDA', 'Redis', 'Grafana'],
+        logo: 'assets/logos/nullnode.png',
+        featured: true,
+      },
+      {
         title: 'ExpressOps',
         meta: 'Lightweight flow orchestrator to automate repetitive _Ops tasks.',
         text: 'Motor de orquestación de flujos de trabajo para automatización y monitoreo de infraestructura/Kubernetes, basado en el lenguaje Go',
@@ -140,7 +148,7 @@ export const SECTIONS = [
       {
         title: 'Actualmente trabajando en...',
         meta: 'More to come',
-        text: 'AdOut-4-Dummies entre otros!!',
+        text: 'Y más cosas en camino!!',
         tags: [],
         logo: 'assets/obscurevideogames.gif',
       },

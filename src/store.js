@@ -21,6 +21,8 @@ export const state = reactive({
   section: 'status',
   fullscreen: false,
   flashing: false,
+  projectsNotifSeen: false,
+  projectsFirstOpened: false,
 })
 
 export function boot() {
@@ -45,6 +47,14 @@ export function powerOff() {
 
 export function openSection(id) {
   state.section = state.section === id ? 'status' : id
+}
+
+export function dismissProjectsNotif() {
+  state.projectsNotifSeen = true
+}
+
+export function markProjectsFirstOpened() {
+  state.projectsFirstOpened = true
 }
 
 export function setShell(color) {
