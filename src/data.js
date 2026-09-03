@@ -148,7 +148,7 @@ export const SECTIONS = [
       {
         title: 'Actualmente trabajando en...',
         meta: 'More to come',
-        text: 'Y más cosas en camino!!',
+        text: 'AdOut-4-Dummies y más cosas en camino!!',
         tags: [],
         logo: 'assets/obscurevideogames.gif',
       },
