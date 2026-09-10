@@ -681,9 +681,9 @@ body {
 
 .status__strip {
   height: auto;
-  margin: 8px 8px 0;
+  margin: 20px 8px 0;
   font-size: 13px;
-  line-height: 18px;
+  line-height: 20px;
 }
 
 .menu {
