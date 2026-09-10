@@ -157,7 +157,7 @@ export const SECTIONS = [
   {
     id: 'skills',
     label: 'Extra skills',
-    sub: 'And recommendations :)',
+    sub: '& recommendations',
     color: 'orange',
     sprite: 'star',
     intro: 'Might be of interest',
